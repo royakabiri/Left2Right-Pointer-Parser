@@ -46,7 +46,7 @@ def create_alphabets(alphabet_directory, train_path, data_paths=None, max_vocabu
                 for line in file:
                     line = line.decode('utf-8')
                     line = line.strip()
-                    if len(line) == 0:
+                    if len(line) == 0 or line.startswith('#'):
                         continue
 
                     tokens = line.split('\t')
@@ -89,7 +89,7 @@ def create_alphabets(alphabet_directory, train_path, data_paths=None, max_vocabu
             for line in file:
                 line = line.decode('utf-8')
                 line = line.strip()
-                if len(line) == 0:
+                if len(line) == 0 or line.startswith('#'):
                     continue
 
                 tokens = line.split('\t')

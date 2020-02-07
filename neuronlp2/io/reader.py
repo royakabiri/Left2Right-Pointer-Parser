@@ -20,7 +20,7 @@ class CoNLLXReader(object):
     def getNext(self, normalize_digits=True, symbolic_root=False, symbolic_end=False):
         line = self.__source_file.readline()
         # skip multiple blank lines.
-        while len(line) > 0 and len(line.strip()) == 0:
+        while len(line) > 0 and len(line.strip()) == 0 or line.startswith('#'):
             line = self.__source_file.readline()
         if len(line) == 0:
             return None
@@ -29,7 +29,9 @@ class CoNLLXReader(object):
         while len(line.strip()) > 0:
             line = line.strip()
             line = line.decode('utf-8')
-            lines.append(line.split('\t'))
+            tokens = line.split('\t')
+            if '-' not in tokens[0]:
+                lines.append(line.split('\t'))
             line = self.__source_file.readline()
 
         length = len(lines)

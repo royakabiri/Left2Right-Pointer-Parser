@@ -181,7 +181,7 @@ def main():
                 oov += 1
             table[index, :] = embedding
         print('word OOV: %d' % oov)
-	print(torch.__version__)
+        print(torch.__version__)
         return torch.from_numpy(table)
 
     def construct_char_embedding_table():
@@ -225,7 +225,7 @@ def main():
         network.word_embedd.freeze()
 
     if use_gpu:
-	print('CUDA IS AVAILABLE')
+        print('CUDA IS AVAILABLE')
         network.cuda()
     else:
 	print('CUDA IS NOT AVAILABLE', use_gpu)
